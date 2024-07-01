@@ -2,14 +2,15 @@ import { CloseButton, TextInput } from "@mantine/core";
 import { useEffect, useState } from "react";
 import ListofTodos from "./ListTodos";
 import styles from "./Todopage.module.css";
-import { useParams } from "react-router-dom";
-import { editprojectnameapi, findprojectbyid } from "../../Api/api";
+import { useNavigate, useParams } from "react-router-dom";
+import { deleteproject, editprojectnameapi, findprojectbyid } from "../../Api/api";
 
 export default function TodoappPage() {
   const {id}=useParams()
   const [projectname,setProjectname]=useState()
   const [enableEditProjectName, setenableProjectName] = useState(false);
   const [editprojectname,setEnableeditprojecname]=useState()
+  const history=useNavigate()
   
 
   useEffect(()=>{
@@ -46,6 +47,16 @@ export default function TodoappPage() {
     
   }
 
+  const deleteprojectfunction=async(projectid,projectname)=>{
+  const dodelete=window.confirm(`Are you really wnat to delete project ${projectname}`)
+  if(dodelete)
+  {
+  const responce=await deleteproject(projectid)
+  if(responce.status==200)
+  history(-1)
+  }
+  }
+
   return (
     <div className={styles.todoappmaindiv}>
       {!enableEditProjectName ? (
@@ -73,12 +84,12 @@ export default function TodoappPage() {
           <div>
             <img
               src="https://cdn-icons-png.flaticon.com/128/1214/1214428.png"
-              alt="editIcon"
+              alt="editIcon" onClick={()=>deleteprojectfunction(id,projectname)}
             />
           </div>
         </div>
       )}
-      <ListofTodos projectid={id} />
+      <ListofTodos projectid={id} projectname={projectname} />
     </div>
   );
 }

@@ -1,11 +1,12 @@
 import { Button, Group } from "@mantine/core"
-import { IconArrowRight } from "@tabler/icons-react"
+import { IconArrowRight, IconDownload } from "@tabler/icons-react"
 import styles from "./Todopage.module.css"
 import { useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { deleteTodo, fetchalltodobyprojectid } from "../../Api/api"
+import { downloadMarkdownFile } from "./MarkDownFile"
 
-export default function ListofTodos({projectid}){
+export default function ListofTodos({projectid,projectname}){
 const history=useNavigate()
 const[todos,setTodos]=useState([])
 const[filtertodos,setFilterTodos]=useState([])
@@ -98,6 +99,8 @@ return(
             Currently No Task Assigned in this Category
             </p>
             </div>}
+
+        {(filtertodos && filtertodos.length>0)&&<div style={{float:"right"}}><Button c={"black"} variant="outline" size="xs" rightSection={<IconDownload width={15}/>} onClick={()=>downloadMarkdownFile(projectname,todos)}> Download Todo Data</Button></div>}
 
 
 

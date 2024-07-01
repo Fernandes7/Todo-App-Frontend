@@ -124,3 +124,15 @@ export const deleteTodo=async(todoid)=>{
         return e.message
     }
 }
+
+
+export const deleteproject=async(projectid)=>{
+    try{
+    const responce=await axios.post(`${Url}/deleteproject`,{data:projectid},{withCredentials:true})
+    return responce
+    }
+    catch(e)
+    {
+        return e.message
+    }
+}
