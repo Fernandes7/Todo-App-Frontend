@@ -7,7 +7,7 @@
     flex-direction: column;
 }
 
-.Addtodowrap h2{
+.Addtodowrap > h2{
 font-family: "Raleway";
 font-size: 22px;
 font-weight: 500;
@@ -19,6 +19,13 @@ margin-bottom: 30px;
     width: 400px;
     height: 60vh;
     padding: 10px;
+}
+
+.registertext{
+    text-align: center;
+    font-family: "Raleway";
+    font-size: 12px;
+    cursor: pointer;
 }
 
 

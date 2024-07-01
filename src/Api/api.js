@@ -100,3 +100,27 @@ export const fetchalltodobyprojectid=async(projectid)=>{
     }
 }
 
+export const editTododata=async(todoid,tododata)=>{
+    try{
+    console.log(tododata)
+    const responce=await axios.post(`${Url}/updatetodo`,{data:{id:todoid,tododata}},{withCredentials:true})
+    return responce
+    }
+    catch(e)
+    {
+        return e.message
+    }
+}
+
+
+export const deleteTodo=async(todoid)=>{
+    try{
+    const responce=await axios.post(`${Url}/deletetodo`,{data:{id:todoid}},{withCredentials:true})
+    console.log(responce)
+    return responce
+    }
+    catch(e)
+    {
+        return e.message
+    }
+}

@@ -1,4 +1,4 @@
-import { Button, Center, PasswordInput, Stack, TextInput,LoadingOverlay,Box, Loader } from "@mantine/core";
+import { Button,Text, Center, PasswordInput, Stack, TextInput,LoadingOverlay,Box, Loader } from "@mantine/core";
 import { hasLength, useForm } from "@mantine/form";
 import { loginFunction } from "../../Api/api";
 import styles from "../AddTodo/Addtodopage.module.css";
@@ -48,6 +48,7 @@ export default function LoginPage(){
              <Center>
               <Button type="submit" w={150} disabled={loading}>Login</Button>
              </Center>
+             <p className={styles.registertext} onClick={()=>history("/register")}>New Member Register Now</p>
             </Stack>
             </form>
            </div>

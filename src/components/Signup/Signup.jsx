@@ -52,6 +52,7 @@ export default function SignupPage(){
              <Center>
               <Button disabled={loading} type="submit" w={150}>Register</Button>
              </Center>
+             <p className={styles.registertext} onClick={()=>history("/login")}>Already Have Account Login Now</p>
             </Stack>
             </form>
            </div>

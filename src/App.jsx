@@ -19,7 +19,7 @@ function App() {
         <Route path="/createproject" element={<CreateProjectPage />}></Route>
         <Route path="/todolist/:id" element={<TodoappPage />}></Route>
         <Route path="/addtodo/:id" element={<AddTodoPage />}></Route>
-        <Route path="/edittodopage" element={<EditTodoPage />}></Route>
+        <Route path="/edittodopage/:id" element={<EditTodoPage />}></Route>
       </Routes>
       </BrowserRouter>
     </>
